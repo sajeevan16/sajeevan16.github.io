@@ -18,8 +18,6 @@ Here are some ideas to get you started:
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sajeevan16" alt="sajeevan16" /> </p>
 
-- 🔭 I’m currently working on **FYP**
-
 - 📫 How to reach me **sajeevan.16@cse.mrt.ac.lk**
 
 <p align="left">
