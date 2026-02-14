@@ -1563,7 +1563,19 @@
               slidesPerView: "auto",
               spaceBetween: 20,
               initialSlide: originalSlideCount, // Start at middle set
-              pagination: false, // Disable pagination - too many dots with 3x slides
+              pagination: {
+                el: ".swiper-pagination",
+                type: "bullets",
+                clickable: true,
+                renderBullet: function (index, className) {
+                  // Only show bullets for the middle set (original slides)
+                  if (index >= originalSlideCount && index < originalSlideCount * 2) {
+                    const adjustedIndex = index - originalSlideCount;
+                    return '<span class="' + className + '" data-slide="' + adjustedIndex + '"></span>';
+                  }
+                  return ''; // Hide bullets for first and last sets
+                }
+              },
               navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev"
