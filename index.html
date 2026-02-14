@@ -1537,30 +1537,24 @@
             // Initialize GLightbox
             GLightbox({ selector: '.glightbox' });
 
-            // Initialize Swiper with proper loop configuration
-            new Swiper('#gallery .init-swiper', {
+            // Add JSON config for Swiper (main.js will initialize it)
+            const swiperConfig = {
               loop: true,
-              loopedSlides: totalSlides, // Match actual slide count
               speed: 600,
               autoplay: {
                 delay: 3000,
-                disableOnInteraction: false,
+                disableOnInteraction: false
               },
-              slidesPerView: 'auto',
-              centeredSlides: false,
+              slidesPerView: "auto",
               spaceBetween: 20,
-              loopAdditionalSlides: 3, // Additional slides for smoother loop
-              watchSlidesProgress: true,
-              observer: true,
-              observeParents: true,
               pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
+                el: ".swiper-pagination",
+                type: "bullets",
                 clickable: true
               },
               navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
               },
               breakpoints: {
                 320: {
@@ -1568,15 +1562,35 @@
                   spaceBetween: 20
                 },
                 768: {
-                   slidesPerView: 2,
-                   spaceBetween: 20
+                  slidesPerView: 2,
+                  spaceBetween: 20
                 },
                 1200: {
                   slidesPerView: 3,
                   spaceBetween: 20
                 }
               }
-            });
+            };
+
+            // Insert config as JSON script (main.js pattern)
+            const configScript = document.createElement('script');
+            configScript.type = 'application/json';
+            configScript.className = 'swiper-config';
+            configScript.textContent = JSON.stringify(swiperConfig, null, 2);
+            
+           const swiperElement = document.querySelector('#gallery .init-swiper');
+            if (swiperElement && !swiperElement.querySelector('.swiper-config')) {
+                swiperElement.insertBefore(configScript, swiperElement.firstChild);
+            }
+
+            // Trigger Swiper init from main.js
+            const initEvent = new Event('load');
+            if (typeof initSwiper === 'function') {
+                initSwiper();
+            } else {
+                // Fallback: manually initialize if main.js function not available
+                new Swiper('#gallery .init-swiper', swiperConfig);
+            }
 
         });
       }
