@@ -1498,6 +1498,11 @@
                 const portraitsRemaining = portraitIndex < portraitCycle.length;
                 const landscapesRemaining = landscapeIndex < landscapeCycle.length;
                 
+                // Stop if no content left to show
+                if (!portraitsRemaining && !landscapesRemaining) {
+                    break; // Exit loop early if we run out of images
+                }
+                
                 if (lastOrientation === 'portrait') {
                     // MUST use landscape next
                     usePortrait = !landscapesRemaining; // Only portrait if no landscapes left
