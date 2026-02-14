@@ -90,23 +90,29 @@ body {
   color: #57606a;
 }
 
-
-
 /* Portfolio/Project Cards */
+.portfolio-item {
+  height: 100%; /* Ensure the wrapper fills the column */
+  display: flex;
+  flex-direction: column;
+}
+
 .portfolio-card {
-  height: 100%; /* Ensures card fills the column height */
+  height: 100%; /* Ensure card fills wrapper */
   display: flex;
   flex-direction: column;
   background: #fff;
   border: 1px solid #d0d7de;
   border-radius: 6px;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .portfolio-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-card img {
@@ -117,11 +123,12 @@ body {
 }
 
 .portfolio-info {
-  padding: 20px 30px; /* More horizontal padding */
+  padding: 15px 25px !important; /* Forces padding, solves "No space" */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: space-between; /* Distribute content */
+  gap: 10px; /* Reduces vertical spacing */
 }
 
 .portfolio-info h4 {
@@ -145,6 +152,7 @@ body {
   margin-bottom: 0px;
   height: 4.8em;
   line-height: 1.6em;
+  flex-grow: 1; /* Allow description to take space */
 }
 
 .portfolio-info .mt-auto {
@@ -227,7 +235,11 @@ body {
   left: 0;
   right: 0;
   padding: 20px 15px 10px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)); /* Gradient for visibility */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  ); /* Gradient for visibility */
   color: #fff;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -240,7 +252,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .gallery-overlay .moment {
@@ -255,9 +267,13 @@ body {
 
 /* Custom GLightbox Skins to remove white background */
 .gslide-desc {
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)) !important; /* Transparent gradient */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  ) !important; /* Transparent gradient */
   color: #fff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
   padding: 20px !important;
   border: none !important;
 }
@@ -270,7 +286,7 @@ body {
 }
 
 .gslide-desc i {
-  color: #FFD700 !important; /* Gold icons in lightbox for contrast */
+  color: #ffd700 !important; /* Gold icons in lightbox for contrast */
   margin-right: 5px;
 }
 
@@ -349,7 +365,7 @@ p {
 
 .skills-badges .badge:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .badge-tech {
@@ -378,7 +394,7 @@ p {
 
 /* Experience Logos */
 .resume-item {
-    clear: both; /* Ensure content doesn't overlap due to floats */
+  clear: both; /* Ensure content doesn't overlap due to floats */
 }
 
 .resume-item .experience-logo {
