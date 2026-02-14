@@ -408,3 +408,18 @@ p {
   background: #fff;
   object-fit: contain;
 }
+
+/* Image Placeholders */
+.gallery-item img, 
+.testimonial-img, 
+.carousel-item img,
+.portfolio-content img {
+  background-color: #f0f0f0;
+  min-height: 200px;
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"] {
+  opacity: 1; /* Ensure visible */
+}
