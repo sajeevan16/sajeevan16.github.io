@@ -1542,9 +1542,9 @@
             // Initialize GLightbox
             GLightbox({ selector: '.glightbox' });
 
-            // Add JSON config for Swiper (main.js will initialize it)
+            // Configure Swiper without loop (to avoid empty slide issues)
             const swiperConfig = {
-              loop: true,
+              loop: false, // Disable loop to prevent empty slides
               speed: 600,
               autoplay: {
                 delay: 3000,
@@ -1552,6 +1552,7 @@
               },
               slidesPerView: "auto",
               spaceBetween: 20,
+              rewind: true, // Use rewind instead of loop for seamless restart
               pagination: {
                 el: ".swiper-pagination",
                 type: "bullets",
