@@ -92,13 +92,13 @@ body {
 
 /* Portfolio/Project Cards */
 .portfolio-item {
-  height: 100%; /* Ensure the wrapper fills the column */
+  /* height: 100%; removed to fix isotope resizing issue */
   display: flex;
   flex-direction: column;
 }
 
 .portfolio-card {
-  height: 100%; /* Ensure card fills wrapper */
+  height: 480px !important; /* Fixed height for uniformity and stability */
   display: flex;
   flex-direction: column;
   background: #fff;
