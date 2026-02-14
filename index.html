@@ -1542,9 +1542,11 @@
             // Initialize GLightbox
             GLightbox({ selector: '.glightbox' });
 
-            // Configure Swiper without loop (to avoid empty slide issues)
+            // Configure Swiper with loop for seamless gallery
+            const actualSlideCount = swiperWrapper.children.length;
             const swiperConfig = {
-              loop: false, // Disable loop to prevent empty slides
+              loop: true, // Enable loop for seamless cycling
+              loopedSlides: actualSlideCount, // Set to actual slide count
               speed: 600,
               autoplay: {
                 delay: 3000,
@@ -1552,7 +1554,10 @@
               },
               slidesPerView: "auto",
               spaceBetween: 20,
-              rewind: true, // Use rewind instead of loop for seamless restart
+              watchSlidesProgress: true,
+              watchSlidesVisibility: true,
+              preloadImages: true, // Ensure all images load
+              updateOnImagesReady: true,
               pagination: {
                 el: ".swiper-pagination",
                 type: "bullets",
@@ -1610,7 +1615,7 @@
               <a href="${item.src}" class="glightbox" data-gallery="gallery-images" 
                  data-title="<i class='bi bi-camera-fill'></i> ${item.moment}" 
                  data-description="<i class='bi bi-geo-alt-fill'></i> ${item.location}">
-                <img src="${item.src}" alt="${item.moment}" class="img-fluid" loading="lazy">
+                <img src="${item.src}" alt="${item.moment}" class="img-fluid">
               </a>
               <div class="gallery-overlay">
                 <div class="moment"><i class="bi bi-camera-fill"></i> ${item.moment}</div>
