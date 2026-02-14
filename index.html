@@ -1486,13 +1486,12 @@
             let portraitIndex = 0;
             let landscapeIndex = 0;
             let lastOrientation = null;
+            
+            // Store all slides HTML first
+            const allSlides = [];
 
             for (let i = 0; i < totalSlides; i++) {
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-
                 // Decide orientation
-                // Rule: If last was portrait, MUST use landscape next (unless no landscapes left)
                 let usePortrait;
                 
                 const portraitsRemaining = portraitIndex < portraitCycle.length;
@@ -1500,53 +1499,62 @@
                 
                 // Stop if no content left to show
                 if (!portraitsRemaining && !landscapesRemaining) {
-                    break; // Exit loop early if we run out of images
+                    break;
                 }
                 
                 if (lastOrientation === 'portrait') {
-                    // MUST use landscape next
-                    usePortrait = !landscapesRemaining; // Only portrait if no landscapes left
+                    usePortrait = !landscapesRemaining;
                 } else {
-                    // Can use either, prefer based on what's remaining
                     if (!portraitsRemaining) {
-                        usePortrait = false; // Must use landscape
+                        usePortrait = false;
                     } else if (!landscapesRemaining) {
-                        usePortrait = true; // Must use portrait
+                        usePortrait = true;
                     } else {
-                        // Both available, random choice
                         usePortrait = Math.random() > 0.5;
                     }
                 }
                 
+                let slideHTML = '';
                 if (usePortrait && portraitsRemaining) {
-                    // PORTRAIT SLIDE
                     const item = portraitCycle[portraitIndex++];
-                    slide.innerHTML = createGalleryItem(item, 'h-100');
+                    slideHTML = createGalleryItem(item, 'h-100');
                     lastOrientation = 'portrait';
-                    swiperWrapper.appendChild(slide);
                 } else if (landscapesRemaining) {
-                    // LANDSCAPE SLIDE (Always get 2 since we pre-duplicated if odd)
                     const item1 = landscapeCycle[landscapeIndex++];
                     const item2 = landscapeIndex < landscapeCycle.length ? landscapeCycle[landscapeIndex++] : null;
                     
                     if (item2) {
-                        slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
+                        slideHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
                     } else {
-                        slide.innerHTML = createGalleryItem(item1, 'h-100');
+                        slideHTML = createGalleryItem(item1, 'h-100');
                     }
                     lastOrientation = 'landscape';
-                    swiperWrapper.appendChild(slide);
+                }
+                
+                if (slideHTML) {
+                    allSlides.push(slideHTML);
                 }
             }
+
+            // Duplicate slides 3 times for seamless infinite effect
+            const duplicatedSlides = [...allSlides, ...allSlides, ...allSlides];
+            
+            // Create actual DOM elements
+            duplicatedSlides.forEach((slideHTML, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = slideHTML;
+                swiperWrapper.appendChild(slide);
+            });
 
             // Initialize GLightbox
             GLightbox({ selector: '.glightbox' });
 
-            // Configure Swiper with loop for seamless gallery
-            const actualSlideCount = swiperWrapper.children.length;
+            // Configure Swiper without loop (we manually duplicated slides)
+            const totalDuplicatedSlides = swiperWrapper.children.length;
+            const originalSlideCount = allSlides.length;
             const swiperConfig = {
-              loop: true, // Enable loop for seamless cycling
-              loopedSlides: actualSlideCount, // Set to actual slide count
+              loop: false, // No loop needed - we duplicated manually
               speed: 600,
               autoplay: {
                 delay: 3000,
@@ -1554,10 +1562,7 @@
               },
               slidesPerView: "auto",
               spaceBetween: 20,
-              watchSlidesProgress: true,
-              watchSlidesVisibility: true,
-              preloadImages: true, // Ensure all images load
-              updateOnImagesReady: true,
+              initialSlide: originalSlideCount, // Start at middle set
               pagination: {
                 el: ".swiper-pagination",
                 type: "bullets",
@@ -1580,28 +1585,38 @@
                   slidesPerView: 3,
                   spaceBetween: 20
                 }
+              },
+              on: {
+                slideChange: function() {
+                  // Jump to middle set when reaching boundaries
+                  if (this.activeIndex >= originalSlideCount * 2) {
+                    this.slideTo(originalSlideCount, 0, false);
+                  } else if (this.activeIndex < originalSlideCount / 2) {
+                    this.slideTo(originalSlideCount + this.activeIndex, 0, false);
+                  }
+                }
               }
             };
 
-            // Insert config as JSON script (main.js pattern)
+            // Insert config as JSON script
             const configScript = document.createElement('script');
             configScript.type = 'application/json';
             configScript.className = 'swiper-config';
             configScript.textContent = JSON.stringify(swiperConfig, null, 2);
             
-           const swiperElement = document.querySelector('#gallery .init-swiper');
+            const swiperElement = document.querySelector('#gallery .init-swiper');
             if (swiperElement && !swiperElement.querySelector('.swiper-config')) {
                 swiperElement.insertBefore(configScript, swiperElement.firstChild);
             }
 
-            // Trigger Swiper init from main.js
-            const initEvent = new Event('load');
-            if (typeof initSwiper === 'function') {
-                initSwiper();
-            } else {
-                // Fallback: manually initialize if main.js function not available
-                new Swiper('#gallery .init-swiper', swiperConfig);
-            }
+            // Initialize Swiper
+            setTimeout(() => {
+                if (typeof initSwiper === 'function') {
+                    initSwiper();
+                } else {
+                    new Swiper('#gallery .init-swiper', swiperConfig);
+                }
+            }, 100);
 
         });
       }
