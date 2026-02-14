@@ -1448,12 +1448,12 @@
         // Load all images and categorize
         Promise.all(galleryData.map(async (item) => {
           const type = await getImageOrientation(item.src);
-          // Simplified key to track uniqueness (e.g., specific event)
+          // Simplified key to track uniqueness
           const eventKey = item.location + item.moment;
           return { ...item, type, eventKey };
         })).then(processedData => {
             
-            // Deduplicate based on src just in case
+            // Deduplicate source data
             const uniqueData = Array.from(new Map(processedData.map(item => [item.src, item])).values());
 
             const portraits = uniqueData.filter(d => d.type === 'portrait');
@@ -1468,93 +1468,79 @@
                 return array;
             };
 
-            let portraitPool = shuffle([...portraits]);
-            let landscapePool = shuffle([...landscapes]);
+            // "Decks" to draw from. We only refill when empty.
+            let portraitDeck = shuffle([...portraits]);
+            let landscapeDeck = shuffle([...landscapes]);
             
-            // History to strictly avoid recent repeats
-            const displayHistory = []; 
-            // Ensure repeats are at least 8 slides apart if possible
-            const MAX_HISTORY = Math.min(8, Math.floor(uniqueData.length / 2)); 
+            // Track last shown item to avoid immediate repeat on refill
+            let lastShownPortrait = null;
+            let lastShownLandscape = null;
 
-            const slidesCount = 20; // Total slides to generate
-            let lastOrientation = null; // 'portrait' or 'landscape'
+            const slidesCount = 15; // Calculated to fit content (~21 images) without forced repeats
+            let lastOrientation = null;
 
-            const getNextItem = (pool, originalPool) => {
-                if (pool.length === 0) {
-                     // Refill from original, re-shuffled
-                     pool.push(...shuffle([...originalPool]));
+            // Draw card from deck, handling refill
+            const drawCard = (deck, originalPool, type) => {
+                if (deck.length === 0) {
+                     // Refill
+                     if (originalPool.length === 0) return null;
+                     
+                     let newDeck = shuffle([...originalPool]);
+                     
+                     // Boundary check: if first item is same as last shown, swap it
+                     // (Only needed if we have more than 1 item)
+                     if (newDeck.length > 1 && type === 'portrait' && lastShownPortrait && newDeck[0].src === lastShownPortrait.src) {
+                         [newDeck[0], newDeck[newDeck.length-1]] = [newDeck[newDeck.length-1], newDeck[0]];
+                     } else if (newDeck.length > 1 && type === 'landscape' && lastShownLandscape && newDeck[0].src === lastShownLandscape.src) {
+                         [newDeck[0], newDeck[newDeck.length-1]] = [newDeck[newDeck.length-1], newDeck[0]];
+                     }
+                     
+                     deck.push(...newDeck);
                 }
                 
-                // Try to find an item NOT in recent history
-                let candidateIndex = -1;
-                
-                // First pass: strictly safe
-                for(let i=0; i<pool.length; i++) {
-                    if(!displayHistory.includes(pool[i].src)) {
-                        candidateIndex = i;
-                        break;
-                    }
+                const item = deck.pop();
+                if (item) {
+                    if (type === 'portrait') lastShownPortrait = item;
+                    else lastShownLandscape = item;
                 }
-                
-                // Second pass: if strictly safe not found, find "safest" (oldest in history)
-                if (candidateIndex === -1 && pool.length > 0) {
-                     // Just pick the first one available in the pool (it's shuffled anyway)
-                     // Ideally we'd look at history timestamp but simplest here is just pick one
-                     candidateIndex = 0; 
-                }
-                
-                if (candidateIndex !== -1) {
-                    const item = pool.splice(candidateIndex, 1)[0];
-                    // Update history
-                    displayHistory.push(item.src);
-                    if(displayHistory.length > MAX_HISTORY) displayHistory.shift();
-                    return item;
-                }
-                return null;
+                return item;
             };
 
             for (let i = 0; i < slidesCount; i++) {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
 
-                // Decide orientation: strictly alternate if possible
+                // Strict Alternation Logic
                 let usePortrait;
                 
                 if (lastOrientation === 'portrait') {
                      usePortrait = false; // Try landscape
-                     // If no landscapes available (or pool exhausted and refill failed?), force portrait
-                     if (landscapePool.length === 0 && landscapes.length === 0) usePortrait = true; 
+                     if (landscapeDeck.length === 0 && landscapes.length === 0) usePortrait = true; 
                 } else if (lastOrientation === 'landscape') {
                      usePortrait = true; // Try portrait
-                     if (portraitPool.length === 0 && portraits.length === 0) usePortrait = false;
+                     if (portraitDeck.length === 0 && portraits.length === 0) usePortrait = false;
                 } else {
-                     // First slide random
                      usePortrait = Math.random() > 0.5;
                 }
                 
-                // If forced to switch back because preferred pool is empty/unsafe
-                // (Handled by check above but double check safety)
-
                 if (usePortrait) {
-                    // PORTRAIT SLIDE
-                    const item = getNextItem(portraitPool, portraits);
+                    // PORTRAIT
+                    const item = drawCard(portraitDeck, portraits, 'portrait');
                     if (item) {
                         slide.innerHTML = createGalleryItem(item, 'h-100');
                         lastOrientation = 'portrait';
                         swiperWrapper.appendChild(slide);
                     }
                 } else {
-                    // LANDSCAPE SLIDE (Two stacked)
-                    const item1 = getNextItem(landscapePool, landscapes);
-                    
-                    // Try to get another distinctive one
-                    let item2 = getNextItem(landscapePool, landscapes);
+                    // LANDSCAPE (Stacked)
+                    const item1 = drawCard(landscapeDeck, landscapes, 'landscape');
+                    const item2 = drawCard(landscapeDeck, landscapes, 'landscape');
                     
                     if (item1) {
                         if (item2) {
                             slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
                         } else {
-                             slide.innerHTML = createGalleryItem(item1, 'h-100'); // Fallback to single landscape full height
+                             slide.innerHTML = createGalleryItem(item1, 'h-100');
                         }
                         lastOrientation = 'landscape';
                         swiperWrapper.appendChild(slide);
@@ -1562,11 +1548,6 @@
                 }
             }
 
-            // Re-init lightbox in case they were destroyed
-            // Note: GLlightbox usually binds to selector, new elements need binding?
-            // Usually GLightbox needs to reload or init on new DOM elements.
-            // But here we are replacing innerHTML of swiperWrapper before init.
-            
             // Initialize GLightbox
             const lightbox = GLightbox({ selector: '.glightbox' });
 
