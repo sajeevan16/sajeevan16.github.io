@@ -91,44 +91,129 @@ body {
   color: #57606a;
 }
 
-/* Portfolio/Project Cards */
-.portfolio-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
 
-.portfolio-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid #d0d7de;
-}
-
-.portfolio-info {
-  padding: 20px;
-  flex-grow: 1; /* Pushes content to fill height */
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio-info h4 {
-  margin-top: 0;
-}
 
 /* Hide default portfolio hover overlay since we are making them cards */
 .portfolio-item:before {
   display: none !important;
+}
+
+/* Gallery Section */
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+  width: 100%;
+  height: 250px; /* Fixed height for uniformity */
+  object-fit: cover;
+}
+
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Gallery Swiper Specifics */
+#gallery .swiper-slide {
+  height: 520px !important; /* Full height for 2 rows + gap */
+  width: 350px !important; /* Fixed width for uniform columns */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Ensure the swiper container has height for 2 rows + space */
+#gallery .swiper {
+  height: 560px; /* Slight buffer for pagination/padding */
+  padding-bottom: 40px;
+}
+
+#gallery .gallery-item {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+#gallery .gallery-item.h-100 {
+  height: 100%;
+}
+
+#gallery .gallery-item.h-50 {
+  height: calc(50% - 10px); /* 50% height minus half the gap */
+}
+
+#gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#gallery .gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Gallery Overlay */
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 15px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)); /* Gradient for visibility */
+  color: #fff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  pointer-events: none; /* Let clicks pass through to the image/lightbox */
+}
+
+.gallery-overlay .location,
+.gallery-overlay .moment {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.gallery-overlay .moment {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.gallery-overlay i {
+  color: #a5c3f6; /* Soft Blue-White instead of Gold */
+}
+
+/* Custom GLightbox Skins to remove white background */
+.gslide-desc {
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0)) !important; /* Transparent gradient */
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9) !important;
+  padding: 20px !important;
+  border: none !important;
+}
+
+.gslide-title {
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 5px !important;
+}
+
+.gslide-desc i {
+  color: #FFD700 !important; /* Gold icons in lightbox for contrast */
+  margin-right: 5px;
+}
+
+.glightbox-clean .gslide-description {
+  background: transparent !important; /* Remove outer white box */
 }
 
 /* Resume Section */

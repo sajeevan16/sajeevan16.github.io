@@ -48,8 +48,9 @@
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
+        <li><a href="#portfolio"><i class="bi bi-code-square navicon"></i><span>Projects</span></a></li>
+        <li><a href="#gallery"><i class="bi bi-images navicon"></i><span>Gallery</span></a></li>
+        <li><a href="#services"><i class="bi bi-award navicon"></i><span>Certifications</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
       </ul>
     </nav>
@@ -66,7 +67,7 @@
       <div class="container" data-aos="zoom-out">
         <div class="row justify-content-center">
           <div class="col-lg-9">
-            <h2>Sajeevan Vinayakavaseekaran</h2>
+            <h2>Sajeevan<br>Vinayakavaseekaran</h2>
             <p>I'm <span class="typed" data-typed-items="Technical Lead, Full-stack Developer, Mentor, Team Player, Innovator, Tech Enthusiast">Technical Lead</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
             <div class="social-links">
               <!-- <a href="#"><i class="bi bi-twitter-x"></i></a> -->
@@ -94,10 +95,10 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/profile-sajeevan.jpg" class="img-fluid" alt="">
+          <div class="col-lg-3">
+             <img src="assets/img/profile-sajeevan.jpg" class="img-fluid rounded-0 shadow-sm" alt="Sajeevan Profile" style="width: 100%; max-width: 280px; display: block; margin: 0 auto;">
           </div>
-          <div class="col-lg-8 content">
+          <div class="col-lg-9 content">
             <h2>Technical Lead &amp; Full-stack Developer.</h2>
             <p class="fst-italic py-3">
               Passionate about technology, innovation, and building high-quality software solutions.
@@ -120,7 +121,7 @@
               </div>
             </div>
             <p class="py-3">
-              I have extensive experience in full-stack development, cloud solutions, and leading technical teams. My journey includes working on complex healthcare systems, mobile applications, and AI-driven solutions.
+              As a dedicated <strong>Technical Lead</strong> with over 5 years of experience, I specialize in architecting and delivering high-performance web and mobile applications. My expertise spans the entire software development lifecycle, from conceptual design to deployment and maintenance. I have successfully led cross-functional teams in the healthcare and logistics sectors, driving digital transformation through innovative solutions like the <strong>VIDA Hospital Information System</strong>. Passionate about cloud technologies, AI integration, and code quality, I am committed to leveraging technology to solve complex real-world problems while mentoring the next generation of engineers.
             </p>
           </div>
         </div>
@@ -379,66 +380,704 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-game">
-              <div class="portfolio-card">
-                <img src="assets/img/projects/rubiks.png" class="img-fluid" alt="">
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <!-- VIDA (Real Work) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sys">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#vidaModal" style="cursor: pointer;">
+                <img src="assets/img/projects/vida.png" class="img-fluid" alt="VIDA System">
                 <div class="portfolio-info">
-                  <h4>Rubik’s Cube 3D Game</h4>
-                  <p>Designed a 3D application to play and solve Rubik’s Cube using a custom algorithm. (WPF, XAML, VB)</p>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                      <span class="badge bg-secondary">Young Computer Scientist 2011</span>
+                  <h4>VIDA (Healthcare System)</h4>
+                  <p>Implemented modules for Billing, Invoice Approval, RMS, and Masterdata for a large-scale hospital system.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Angular</span>
+                      <span class="badge bg-primary-soft text-primary">Spring Boot</span>
+                      <span class="badge bg-primary-soft text-primary">Java</span>
+                      <span class="badge bg-primary-soft text-primary">Oracle</span>
+                      <span class="badge bg-primary-soft text-primary">Redis</span>
+                      <span class="badge bg-primary-soft text-primary">Kafka</span>
+                    </div>
+                    <div class="mt-2">
+                      <span class="badge bg-success"><i class="bi bi-briefcase-fill me-1"></i> Work Experience</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-algo">
-              <div class="portfolio-card">
-                <img src="assets/img/projects/moway.png" class="img-fluid" alt="">
+            <!-- Trail Way (Real Work) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#trailwayModal" style="cursor: pointer;">
+                <img src="assets/img/projects/trailway.png" class="img-fluid" alt="Trail Way Messaging">
                 <div class="portfolio-info">
-                  <h4>Moway (Self-Driving Car)</h4>
-                  <p>Virtual self-driving car using reinforcement learning to mimic behavior and analyze traffic bottleneck damping.</p>
+                  <h4>Trail Way Messaging System</h4>
+                  <p>Real-time messaging system management for logistics and transportation.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Ionic</span>
+                      <span class="badge bg-primary-soft text-primary">ExpressJS</span>
+                      <span class="badge bg-primary-soft text-primary">WebSockets</span>
+                    </div>
+                    <div class="mt-2">
+                       <span class="badge bg-success"><i class="bi bi-briefcase-fill me-1"></i> Work Experience</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
 
+            <!-- PacGuard (Research) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-algo">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#pacguardModal" style="cursor: pointer;">
+                <img src="assets/img/projects/pacguard.png" class="img-fluid" alt="PacGuard">
+                <div class="portfolio-info">
+                  <h4>PacGuard (API Security)</h4>
+                  <p>API-based attack simulation & detection system using Reinforcement Learning to identify DDoS attacks.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Python</span>
+                      <span class="badge bg-primary-soft text-primary">Keras</span>
+                      <span class="badge bg-primary-soft text-primary">RL</span>
+                      <span class="badge bg-primary-soft text-primary">Docker</span>
+                      <span class="badge bg-primary-soft text-primary">Flask</span>
+                    </div>
+                    <div class="mt-2">
+                      <span class="badge bg-warning text-dark"><i class="bi bi-trophy-fill me-1"></i> Final Year Research</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <!-- Moway (Update) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-algo">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#mowayModal" style="cursor: pointer;">
+                <img src="assets/img/projects/moway.png" class="img-fluid" alt="Moway">
+                <div class="portfolio-info">
+                  <h4>Moway (Self-Driving Car)</h4>
+                  <p>Virtual self-driving car simulation using RL to analyze traffic patterns and bottlenecks.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Python</span>
+                      <span class="badge bg-primary-soft text-primary">TensorFlow</span>
+                      <span class="badge bg-primary-soft text-primary">Pygame</span>
+                      <span class="badge bg-primary-soft text-primary">RL</span>
+                    </div>
+                    <div class="mt-2">
+                      <span class="badge bg-secondary"><i class="bi bi-github me-1"></i> View Code</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <!-- Exam System (Volunteer) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#examModal" style="cursor: pointer;">
+                <img src="assets/img/projects/exam_system.png" class="img-fluid" alt="Exam System">
+                <div class="portfolio-info">
+                  <h4>Exam Management System</h4>
+                  <p>Web-based system for managing island-wide A/L pilot examinations for 5500+ students.</p>
+                  <div class="mt-auto">
+                     <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">PHP</span>
+                      <span class="badge bg-primary-soft text-primary">MySQL</span>
+                      <span class="badge bg-primary-soft text-primary">jQuery</span>
+                      <span class="badge bg-primary-soft text-primary">HTML5</span>
+                    </div>
+                    <div class="mt-2">
+                       <span class="badge bg-info text-dark"><i class="bi bi-heart-fill me-1"></i> Volunteer Project</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <!-- Rubiks (Existing - Updated) -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-game">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#rubiksModal" style="cursor: pointer;">
+                <img src="assets/img/projects/rubiks.png" class="img-fluid" alt="Rubiks Cube">
+                <div class="portfolio-info">
+                  <h4>Rubik’s Cube 3D Game</h4>
+                  <p>3D application to play and solve Rubik’s Cube using a custom algorithm.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">WPF</span>
+                      <span class="badge bg-primary-soft text-primary">XAML</span>
+                      <span class="badge bg-primary-soft text-primary">VB</span>
+                    </div>
+                     <div class="mt-2">
+                      <span class="badge bg-warning text-dark"><i class="bi bi-trophy-fill me-1"></i> Young Computer Scientist</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <!-- Jupiter (Restored) -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sys">
-              <div class="portfolio-card">
-                <img src="assets/img/projects/jupiter.png" class="img-fluid" alt="">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#jupiterModal" style="cursor: pointer;">
+                <img src="assets/img/projects/jupiter.png" class="img-fluid" alt="Jupiter HRMS">
                 <div class="portfolio-info">
                   <h4>Jupiter (HRMS)</h4>
                   <p>Complete Human Resource Management System with normalized database design and security protocols.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Java</span>
+                      <span class="badge bg-primary-soft text-primary">MySQL</span>
+                      <span class="badge bg-primary-soft text-primary">NetBeans</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
 
+            <!-- Treasure Loot (Restored) -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-game">
-              <div class="portfolio-card">
-                <img src="assets/img/projects/treasure.png" class="img-fluid" alt="">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#treasureModal" style="cursor: pointer;">
+                <img src="assets/img/projects/treasure.png" class="img-fluid" alt="Treasure Loot">
                 <div class="portfolio-info">
                   <h4>Treasure Loot Game</h4>
                   <p>Object-oriented programming concept implementation through a game.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">Java</span>
+                      <span class="badge bg-primary-soft text-primary">OOP</span>
+                      <span class="badge bg-primary-soft text-primary">Swing</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
 
+            <!-- Nano Processor (Restored) -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sys">
-              <div class="portfolio-card">
-                <img src="assets/img/projects/nano.png" class="img-fluid" alt="">
+              <div class="portfolio-card" data-bs-toggle="modal" data-bs-target="#nanoModal" style="cursor: pointer;">
+                <img src="assets/img/projects/nano.png" class="img-fluid" alt="Nano Processor">
                 <div class="portfolio-info">
                   <h4>Nano Processor Design</h4>
                   <p>Designed a 4-bit Nano processor capable of executing instructions, with visualization on a 7-segment display.</p>
+                  <div class="mt-auto">
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      <span class="badge bg-primary-soft text-primary">VHDL</span>
+                      <span class="badge bg-primary-soft text-primary">Logisim</span>
+                      <span class="badge bg-primary-soft text-primary">Assembly</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
 
         </div>
 
       </div>
 
     </section><!-- /Projects Section -->
+
+    <!-- ============================================ -->
+    <!-- Project Details Modals (Popups)              -->
+    <!-- ============================================ -->
+
+    <!-- 1. VIDA Modal -->
+    <div class="modal fade" id="vidaModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold text-primary">VIDA Healthcare System</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+            <div class="row">
+               <div class="col-md-5 mb-3 mb-md-0">
+                  <img src="assets/img/projects/vida.png" class="img-fluid rounded shadow-sm w-100" alt="VIDA System">
+               </div>
+               <div class="col-md-7">
+                  <p class="text-muted small mb-3">Implemented critical modules for a large-scale hospital system used across Saudi Arabia.</p>
+                  
+                  <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role & Contributions</h6>
+                  <p class="small mb-3">
+                     As <strong>Associate Tech Lead / Senior SE</strong>, I led the development of the Billing, Invoice Approval, and RMS (Revenue Management System) modules. My role involved architectural decisions, code reviews, and mentoring junior developers to ensure code quality and performance.
+                  </p>
+
+                  <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                     <span class="badge bg-light text-dark border">Angular</span>
+                     <span class="badge bg-light text-dark border">Spring Boot</span>
+                     <span class="badge bg-light text-dark border">Java</span>
+                     <span class="badge bg-light text-dark border">Oracle DB</span>
+                     <span class="badge bg-light text-dark border">Redis (Caching)</span>
+                     <span class="badge bg-light text-dark border">Kafka (Messaging)</span>
+                  </div>
+               </div>
+            </div>
+            <hr class="my-4">
+            <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+            <p class="small text-muted">A microservices-based architecture designed for high throughput and scalability. The system utilizes <strong>Kafka</strong> for asynchronous event processing between modules (e.g., patient admission -> billing trigger) to decouple services. <strong>Redis</strong> is employed for caching frequently accessed master data like service codes and pricing, significantly reducing database load. The frontend is a modular <strong>Angular</strong> application ensuring a responsive user experience for hospital staff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Trail Way Modal -->
+    <div class="modal fade" id="trailwayModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Trail Way Messaging System</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/trailway.png" class="img-fluid rounded shadow-sm w-100" alt="Trail Way">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">A real-time messaging solution for logistics coordination.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Full-Stack Developer</strong> responsible for the real-time communication layer and mobile interface.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">Ionic (Mobile)</span>
+                      <span class="badge bg-light text-dark border">ExpressJS (Backend)</span>
+                      <span class="badge bg-light text-dark border">WebSockets (Socket.io)</span>
+                      <span class="badge bg-light text-dark border">MongoDB</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">Leveraging <strong>WebSockets</strong> for bi-directional communication, this system allows dispatchers and drivers to communicate instantly without polling overhead. The backend is built on <strong>ExpressJS</strong> for lightweight, event-driven handling of thousands of concurrent connections. The frontend uses <strong>Ionic</strong> to provide a seamless cross-platform mobile experience for drivers on the road.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PacGuard Modal -->
+    <div class="modal fade" id="pacguardModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">PacGuard (API Security)</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/pacguard.png" class="img-fluid rounded shadow-sm w-100" alt="PacGuard System">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Reinforcement Learning based system to detect and mitigate API attacks.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Researcher & Developer</strong>. Conducted experiments on DDoS patterns and trained the RL agent.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">Python</span>
+                      <span class="badge bg-light text-dark border">Keras / TensorFlow</span>
+                      <span class="badge bg-light text-dark border">Reinforcement Learning (DQN)</span>
+                      <span class="badge bg-light text-dark border">Docker</span>
+                      <span class="badge bg-light text-dark border">Flask API</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">The system models API security as a game where the <strong>Agent (PacGuard)</strong> learns to block malicious requests while allowing legitimate traffic. It uses a <strong>Deep Q-Network (DQN)</strong> to predict the optimal action (Allow/Block) based on request features (rate, size, source). The environment is simulated using Docker containers representing legitimate users and attackers targeting a Flask-based API endpoint.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Moway Modal -->
+    <div class="modal fade" id="mowayModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Moway Self-Driving Simulation</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/moway.png" class="img-fluid rounded shadow-sm w-100" alt="Moway">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">AI-driven traffic simulation to optimize vehicle flow.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Developer</strong>. Implemented the simulation environment and the RL agent logic.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">Python</span>
+                      <span class="badge bg-light text-dark border">TensorFlow</span>
+                      <span class="badge bg-light text-dark border">Pygame</span>
+                      <span class="badge bg-light text-dark border">Q-Learning</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">The simulation environment (built with <strong>Pygame</strong>) represents a road network with intersections and traffic signals. The autonomous vehicle agents use <strong>Q-Learning</strong> to learn policies that minimize travel time and avoid collisions. The state space includes vehicle position, velocity, and distance to nearest obstacles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Exam System Modal -->
+    <div class="modal fade" id="examModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Exam Management System</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/exam_system.png" class="img-fluid rounded shadow-sm w-100" alt="Exam System">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Platform for managing island-wide A/L pilot exams for 5500+ students.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Database Manager & Full-Stack Developer</strong>. Designed the database schema and admin dashboard.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">PHP</span>
+                      <span class="badge bg-light text-dark border">MySQL</span>
+                      <span class="badge bg-light text-dark border">jQuery</span>
+                      <span class="badge bg-light text-dark border">Bootstrap</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">A classic <strong>MVC (Model-View-Controller)</strong> architecture using PHP. The <strong>MySQL</strong> database was normalized to 3NF to handle student records, exam centers, and results efficiently. The system included role-based access control (RBAC) for admins, coordinators, and students.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Rubiks Cube Modal -->
+    <div class="modal fade" id="rubiksModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Rubik’s Cube 3D Game</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/rubiks.png" class="img-fluid rounded shadow-sm w-100" alt="Rubiks Cube">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Interactive 3D application to play and solve Rubik’s Cube.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Core Developer</strong>. Implemented the 3D rendering logic and solving algorithm.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">WPF (Windows Presentation Foundation)</span>
+                      <span class="badge bg-light text-dark border">XAML</span>
+                      <span class="badge bg-light text-dark border">Visual Basic .NET</span>
+                      <span class="badge bg-light text-dark border">3D Graphics</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">Utilized <strong>WPF's Viewport3D</strong> capabilities to render the cube faces as 3D geometries. The solving logic implements a two-phase algorithm (similar to Kociemba's) to find a solution in fewer than 22 moves. The UI interaction layer maps 2D mouse movements to 3D rotational transformations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Jupiter Modal -->
+    <div class="modal fade" id="jupiterModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Jupiter HRMS</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/jupiter.png" class="img-fluid rounded shadow-sm w-100" alt="Jupiter HRMS">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Enterprise-grade Human Resource Management System.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Backend Developer</strong>. Focused on database design and business logic implementation.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">Java SE</span>
+                      <span class="badge bg-light text-dark border">MySQL</span>
+                      <span class="badge bg-light text-dark border">NetBeans Platform</span>
+                      <span class="badge bg-light text-dark border">JDBC</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">Examples a classic <strong>multi-layered architecture</strong> (Presentation, Logic, Data Access). The application enforces strict data integrity constraints at the database level and uses <strong>DAO (Data Access Object)</strong> patterns for clean separation of concerns. Security protocols include encrypted credential storage and session management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Treasure Loot Modal -->
+    <div class="modal fade" id="treasureModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Treasure Loot Game</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/treasure.png" class="img-fluid rounded shadow-sm w-100" alt="Treasure Loot">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Strategy game demonstrating Object-Oriented Programming principles.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Solo Developer</strong>. Designed the class hierarchy and game loop.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">Java</span>
+                      <span class="badge bg-light text-dark border">Swing</span>
+                      <span class="badge bg-light text-dark border">OOP Patterns</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">Heavily relies on **OOP Design Patterns**: **Factory Pattern** for spawning different enemy types, **Strategy Pattern** for defining different movement behaviors, and **Observer Pattern** for updating the UI score based on game events. This ensures the codebase is modular and easily extensible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Nano Processor Modal -->
+    <div class="modal fade" id="nanoModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+             <h5 class="modal-title fw-bold text-primary">Nano Processor Design</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-2">
+             <div class="row">
+                <div class="col-md-5 mb-3 mb-md-0">
+                   <img src="assets/img/projects/nano.png" class="img-fluid rounded shadow-sm w-100" alt="Nano Processor">
+                </div>
+                <div class="col-md-7">
+                   <p class="text-muted small mb-3">Design and simulation of a 4-bit microprocessor.</p>
+                   
+                   <h6 class="fw-bold"><i class="bi bi-person-badge-fill me-2 text-secondary"></i>Role</h6>
+                   <p class="small mb-3"><strong>Hardware Designer</strong>. Implemented the ALU and Control Unit logic.</p>
+ 
+                   <h6 class="fw-bold"><i class="bi bi-stack me-2 text-secondary"></i>Tech Stack</h6>
+                   <div class="d-flex flex-wrap gap-2 mb-3">
+                      <span class="badge bg-light text-dark border">VHDL</span>
+                      <span class="badge bg-light text-dark border">Logisim</span>
+                      <span class="badge bg-light text-dark border">Assembly Language</span>
+                   </div>
+                </div>
+             </div>
+             <hr class="my-4">
+             <h6 class="fw-bold"><i class="bi bi-diagram-3-fill me-2 text-secondary"></i>Architecture & Design</h6>
+             <p class="small text-muted">The processor features a custom <strong>Instruction Set Architecture (ISA)</strong> capable of basic arithmetic and logic operations. It includes a 4-bit <strong>Arithmetic Logic Unit (ALU)</strong>, a Program Counter, Instruction Register, and a Control Unit that decodes opcodes into control signals. The design was verified through rigorous timing simulations in Logisim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Gallery</h2>
+        <p>A glimpse into my professional journey, achievements, and memorable moments.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <div class="swiper-wrapper">
+
+            <!-- Gallery Item 1 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-1.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-1.jpeg" alt="Gallery Image 1" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-2.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-2.jpeg" alt="Gallery Image 2" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <!-- Gallery Item 3 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-3.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-3.jpeg" alt="Gallery Image 3" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <!-- Gallery Item 4 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-4.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-4.jpeg" alt="Gallery Image 4" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 5 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-5.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-5.jpeg" alt="Gallery Image 5" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-6.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-6.jpeg" alt="Gallery Image 6" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 7 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-7.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-7.jpeg" alt="Gallery Image 7" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 8 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-8.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-8.jpeg" alt="Gallery Image 8" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <!-- Gallery Item 9 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-9.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-9.jpeg" alt="Gallery Image 9" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <!-- Gallery Item 10 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-10.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-10.jpeg" alt="Gallery Image 10" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 11 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-11.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-11.jpeg" alt="Gallery Image 11" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Gallery Item 12 -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/gallery-12.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/gallery-12.jpeg" alt="Gallery Image 12" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <!-- Existing Important Images -->
+            <div class="swiper-slide">
+              <div class="gallery-item">
+                <a href="assets/img/gallery/award-1.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/award-1.jpeg" alt="Award 1" class="img-fluid">
+                </a>
+              </div>
+            </div>
+            
+            <div class="swiper-slide">
+               <div class="gallery-item">
+                <a href="assets/img/gallery/award-2.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/award-2.jpeg" alt="Award 2" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+               <div class="gallery-item">
+                <a href="assets/img/gallery/vida-1.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/vida-1.jpeg" alt="VIDA 1" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+               <div class="gallery-item">
+                <a href="assets/img/gallery/csi-1.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/csi-1.jpeg" alt="CSI Event" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+               <div class="gallery-item">
+                <a href="assets/img/gallery/fun-1.jpeg" class="glightbox" data-gallery="gallery-images">
+                  <img src="assets/img/gallery/fun-1.jpeg" alt="Fun" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Gallery Section -->
 
     <!-- Certifications & Awards Section -->
     <section id="services" class="services section">
@@ -700,6 +1339,189 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- Custom Script for Gallery Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // ==========================================
+      // EDIT GALLERY DATA HERE
+      // ==========================================
+      const galleryData = [
+        { src: "assets/img/gallery/award-1.jpeg", location: "CSI | 8th Anniversary", moment: "All Rounder Award" },
+        { src: "assets/img/gallery/award-2.jpeg", location: "CSI | 8th Anniversary", moment: "All Rounder Award" },
+        { src: "assets/img/gallery/vida-1.jpeg", location: "CSI | Riyadh, Saudi Arabia", moment: "VIDA System Launch" },
+        { src: "assets/img/gallery/vida-2.jpeg", location: "CSI | Al Hamra Hospital", moment: "POS Integration Success" },
+        { src: "assets/img/gallery/csi-1.jpeg", location: "Cloud Solutions International", moment: "8th Anniversary Celebration" },
+        { src: "assets/img/gallery/csi-2.jpeg", location: "CSI | 8th Anniversary", moment: "Team Collaboration" },
+        { src: "assets/img/gallery/csi-3.jpeg", location: "CSI | 8th Anniversary", moment: "Celebrating Success" },
+        { src: "assets/img/gallery/fun-1.jpeg", location: "ShipXpress | Web Tec", moment: "ZeroDays Hackathon | Team Presentation" },
+        { src: "assets/img/gallery/gallery-1.jpeg", location: "ShipXpress | Web Tec", moment: "ZeroDays Hackathon | Overnight Coding" },
+        { src: "assets/img/gallery/gallery-2.jpeg", location: "Cloud Solutions International", moment: "The Dream Team" },
+        { src: "assets/img/gallery/gallery-3.jpeg", location: "Cloud Solutions International", moment: "Colleague's Farewell" },
+        { src: "assets/img/gallery/gallery-4.jpeg", location: "Cloud Solutions International", moment: "Office Moments" },
+        { src: "assets/img/gallery/gallery-5.jpeg", location: "Cloud Solutions International", moment: "Post-Work Relaxation" },
+        { src: "assets/img/gallery/gallery-6.jpeg", location: "Cloud Solutions International", moment: "Celebrating 100th Sprint" },
+        { src: "assets/img/gallery/gallery-7.jpeg", location: "Cloud Solutions International", moment: "Team Outing" },
+        { src: "assets/img/gallery/gallery-8.jpeg", location: "ShipXpress | Web Tec", moment: "Gaming Night" },
+        { src: "assets/img/gallery/gallery-9.jpeg", location: "ShipXpress | Web Tec", moment: "Farewell Moment" },
+        { src: "assets/img/gallery/gallery-10.jpeg", location: "Cloud Solutions International", moment: "Collaborating with Peers" },
+        { src: "assets/img/gallery/gallery-11.jpeg", location: "CSI | 8th Anniversary", moment: "Team Bonding" },
+        { src: "assets/img/gallery/gallery-12.jpeg", location: "Al Hamra Hospital", moment: "Milestone Achieved" }
+      ];
+
+      const swiperWrapper = document.querySelector('#gallery .swiper-wrapper');
+
+      if (swiperWrapper) {
+        swiperWrapper.innerHTML = ''; // Clear existing slides
+
+        // Helper to determine orientation
+        const getImageOrientation = (src) => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+              resolve(img.naturalWidth >= img.naturalHeight ? 'landscape' : 'portrait');
+            };
+            img.onerror = () => resolve('landscape'); // Default fallback
+            img.src = src;
+          });
+        };
+
+        // Load all images and categorize
+        Promise.all(galleryData.map(async (item) => {
+          const type = await getImageOrientation(item.src);
+          // Extract a simple event key (e.g., "CSI | 8th Anniversary") to check for duplicates
+          const eventKey = item.location.split('|')[0].trim(); 
+          return { ...item, type, eventKey };
+        })).then(processedData => {
+          
+          // Smart Shuffle: Try to pick an item that is different from the last one
+          const smartShuffle = (items) => {
+             // First, simple shuffle
+             for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+             }
+             return items;
+          };
+
+          // Separate pools
+          let portraits = smartShuffle(processedData.filter(d => d.type === 'portrait'));
+          let landscapes = smartShuffle(processedData.filter(d => d.type === 'landscape'));
+
+          const slidesCount = 15; // Total columns to generate
+          let lastEventKey = null;
+
+          // Helper to pick a safe item from a list (try to avoid lastEventKey)
+          const pickSafeItem = (list) => {
+             if (list.length === 0) return null;
+             
+             // Try to find one that doesn't match the last event
+             const safeIndex = list.findIndex(item => item.eventKey !== lastEventKey);
+             
+             if (safeIndex !== -1) {
+                // Found a safe one, remove and return
+                return list.splice(safeIndex, 1)[0];
+             } else {
+                // No safe option, just take the first one
+                return list.shift();
+             }
+          };
+
+          // Refill helpers... we need to be careful with refilling to not duplicate too much instantly
+          // For simplicity, we just clone the original pools if empty
+          const rawPortraits = processedData.filter(d => d.type === 'portrait');
+          const rawLandscapes = processedData.filter(d => d.type === 'landscape');
+
+          for (let i = 0; i < slidesCount; i++) {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            
+            const usePortrait = Math.random() > 0.6 && portraits.length > 0;
+
+            if (usePortrait || landscapes.length === 0) {
+               // Portrait
+               if (portraits.length === 0) portraits = smartShuffle([...rawPortraits]); // Refill
+               
+               const item = pickSafeItem(portraits);
+               if (item) {
+                   lastEventKey = item.eventKey;
+                   slide.innerHTML = createGalleryItem(item, 'h-100');
+               }
+            } else {
+               // Landscapes (Stacked)
+               if (landscapes.length < 2) landscapes = smartShuffle([...rawLandscapes]); // Refill
+               
+               const item1 = pickSafeItem(landscapes);
+               if(item1) lastEventKey = item1.eventKey; // Update last key
+               
+               // Try to pick item2 that doesn't match item1
+               const item2 = pickSafeItem(landscapes);
+               if(item2) lastEventKey = item2.eventKey;
+
+               if (item1 && item2) {
+                   slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
+               } else if (item1) {
+                   slide.innerHTML = createGalleryItem(item1, 'h-100'); // Fallback if only 1 left
+               }
+            }
+            
+            swiperWrapper.appendChild(slide);
+          }
+
+          // Re-init lightbox
+          GLightbox({ selector: '.glightbox' });
+
+          // Initialize Swiper
+          new Swiper('#gallery .init-swiper', {
+            loop: true,
+            speed: 600,
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+              320: {
+                 spaceBetween: 10
+              },
+              768: {
+                 spaceBetween: 20
+              }
+            }
+          });
+
+        });
+      }
+
+      function createGalleryItem(item, heightClass) {
+          return `
+            <div class="gallery-item ${heightClass}">
+              <a href="${item.src}" class="glightbox" data-gallery="gallery-images" 
+                 data-title="<i class='bi bi-camera-fill'></i> ${item.moment}" 
+                 data-description="<i class='bi bi-geo-alt-fill'></i> ${item.location}">
+                <img src="${item.src}" alt="${item.moment}" class="img-fluid">
+              </a>
+              <div class="gallery-overlay">
+                <div class="moment"><i class="bi bi-camera-fill"></i> ${item.moment}</div>
+                <div class="location"><i class="bi bi-geo-alt-fill"></i> ${item.location}</div>
+              </div>
+            </div>
+          `;
+      }
+
+    });
+  </script>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -718,7 +1540,7 @@
   <!-- Dynamic Stats Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const startDate = new Date('2019-06-01'); // Career Start Date
+      const startDate = new Date('2021-01-01'); // Career Start Date (Adjusted for ~5 years)
       const today = new Date();
       
       // Calculate Years of Experience
