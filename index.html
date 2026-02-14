@@ -1540,14 +1540,17 @@
             // Initialize Swiper with proper loop configuration
             new Swiper('#gallery .init-swiper', {
               loop: true,
-              loopedSlides: Math.max(15, totalSlides * 2), // Larger buffer for smooth looping
+              loopedSlides: totalSlides, // Match actual slide count
               speed: 600,
               autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
               },
               slidesPerView: 'auto',
+              centeredSlides: false,
               spaceBetween: 20,
+              loopAdditionalSlides: 3, // Additional slides for smoother loop
+              watchSlidesProgress: true,
               observer: true,
               observeParents: true,
               pagination: {
