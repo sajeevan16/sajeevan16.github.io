@@ -1510,17 +1510,25 @@
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
 
-                // Strict Alternation Logic
+                // Strict Alternation Logic: Modified
+                // Rule: Portraits can NOT be near-by-near. Landscapes CAN.
+                
                 let usePortrait;
                 
                 if (lastOrientation === 'portrait') {
-                     usePortrait = false; // Try landscape
+                     usePortrait = false; // MUST be landscape
+                     // Exception: if NO landscapes left at all (deck + pool empty)
                      if (landscapeDeck.length === 0 && landscapes.length === 0) usePortrait = true; 
-                } else if (lastOrientation === 'landscape') {
-                     usePortrait = true; // Try portrait
-                     if (portraitDeck.length === 0 && portraits.length === 0) usePortrait = false;
                 } else {
+                     // Last was landscape (or null/start)
+                     // Can be either. Let's weigh it based on availability or random.
+                     // 50/50 chance if both available.
                      usePortrait = Math.random() > 0.5;
+                     
+                     // Force landscape if portrait pool is empty
+                     if (portraitDeck.length === 0 && portraits.length === 0) usePortrait = false;
+                     // Force portrait if landscape pool is empty
+                     if (landscapeDeck.length === 0 && landscapes.length === 0) usePortrait = true;
                 }
                 
                 if (usePortrait) {
