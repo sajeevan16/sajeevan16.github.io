@@ -659,7 +659,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/trailway.png" class="img-fluid rounded shadow-sm w-100" alt="Trail Way" loading="lazy">
+                   <img src="assets/img/projects/trailway.jpg" class="img-fluid rounded shadow-sm w-100" alt="Trail Way" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">A real-time messaging solution for logistics coordination.</p>
@@ -695,7 +695,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/pacguard.png" class="img-fluid rounded shadow-sm w-100" alt="PacGuard System" loading="lazy">
+                   <img src="assets/img/projects/pacguard.jpg" class="img-fluid rounded shadow-sm w-100" alt="PacGuard System" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Reinforcement Learning based system to detect and mitigate API attacks.</p>
@@ -732,7 +732,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/moway.png" class="img-fluid rounded shadow-sm w-100" alt="Moway" loading="lazy">
+                   <img src="assets/img/projects/moway.jpg" class="img-fluid rounded shadow-sm w-100" alt="Moway" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">AI-driven traffic simulation to optimize vehicle flow.</p>
@@ -771,7 +771,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/exam_system.png" class="img-fluid rounded shadow-sm w-100" alt="Exam System" loading="lazy">
+                   <img src="assets/img/projects/exam_system.jpg" class="img-fluid rounded shadow-sm w-100" alt="Exam System" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Platform for managing island-wide A/L pilot exams for 5500+ students.</p>
@@ -807,7 +807,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/rubiks.png" class="img-fluid rounded shadow-sm w-100" alt="Rubiks Cube" loading="lazy">
+                   <img src="assets/img/projects/rubiks.jpg" class="img-fluid rounded shadow-sm w-100" alt="Rubiks Cube" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Interactive 3D application to play and solve Rubik’s Cube.</p>
@@ -843,7 +843,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/jupiter.png" class="img-fluid rounded shadow-sm w-100" alt="Jupiter HRMS" loading="lazy">
+                   <img src="assets/img/projects/jupiter.jpg" class="img-fluid rounded shadow-sm w-100" alt="Jupiter HRMS" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Enterprise-grade Human Resource Management System.</p>
@@ -879,7 +879,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/treasure.png" class="img-fluid rounded shadow-sm w-100" alt="Treasure Loot" loading="lazy">
+                   <img src="assets/img/projects/treasure.jpg" class="img-fluid rounded shadow-sm w-100" alt="Treasure Loot" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Strategy game demonstrating Object-Oriented Programming principles.</p>
@@ -914,7 +914,7 @@
           <div class="modal-body pt-2">
              <div class="row">
                 <div class="col-md-5 mb-3 mb-md-0">
-                   <img src="assets/img/projects/nano.png" class="img-fluid rounded shadow-sm w-100" alt="Nano Processor" loading="lazy">
+                   <img src="assets/img/projects/nano.jpg" class="img-fluid rounded shadow-sm w-100" alt="Nano Processor" loading="lazy">
                 </div>
                 <div class="col-md-7">
                    <p class="text-muted small mb-3">Design and simulation of a 4-bit microprocessor.</p>
@@ -1469,7 +1469,14 @@
 
             // Shuffle once - this is our cycle
             const portraitCycle = shuffle(portraits);
-            const landscapeCycle = shuffle(landscapes);
+            let landscapeCycle = shuffle(landscapes);
+            
+            // If landscapes are odd, duplicate the last one and insert at middle
+            if (landscapeCycle.length % 2 === 1) {
+                const duplicateItem = landscapeCycle[landscapeCycle.length - 1];
+                const middleIndex = Math.floor(landscapeCycle.length / 2);
+                landscapeCycle.splice(middleIndex, 0, duplicateItem);
+            }
             
             // Calculate exact slide count needed
             // Each portrait = 1 slide, each 2 landscapes = 1 slide
@@ -1513,17 +1520,9 @@
                     lastOrientation = 'portrait';
                     swiperWrapper.appendChild(slide);
                 } else if (landscapesRemaining) {
-                    // LANDSCAPE SLIDE (Try to get 2, or duplicate last if odd)
+                    // LANDSCAPE SLIDE (Always get 2 since we pre-duplicated if odd)
                     const item1 = landscapeCycle[landscapeIndex++];
-                    let item2;
-                    
-                    if (landscapeIndex < landscapeCycle.length) {
-                        // We have another landscape
-                        item2 = landscapeCycle[landscapeIndex++];
-                    } else if (landscapeCycle.length % 2 === 1) {
-                        // Odd count, duplicate the last one
-                        item2 = item1;
-                    }
+                    const item2 = landscapeIndex < landscapeCycle.length ? landscapeCycle[landscapeIndex++] : null;
                     
                     if (item2) {
                         slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
@@ -1541,7 +1540,7 @@
             // Initialize Swiper with proper loop configuration
             new Swiper('#gallery .init-swiper', {
               loop: true,
-              loopedSlides: Math.max(10, totalSlides), // Buffer for smooth looping
+              loopedSlides: Math.max(15, totalSlides * 2), // Larger buffer for smooth looping
               speed: 600,
               autoplay: {
                 delay: 3000,
