@@ -1448,9 +1448,7 @@
         // Load all images and categorize
         Promise.all(galleryData.map(async (item) => {
           const type = await getImageOrientation(item.src);
-          // Simplified key to track uniqueness
-          const eventKey = item.location + item.moment;
-          return { ...item, type, eventKey };
+          return { ...item, type };
         })).then(processedData => {
             
             // Deduplicate source data
@@ -1461,107 +1459,89 @@
             
             // Shuffle utility
             const shuffle = (array) => {
-                for (let i = array.length - 1; i > 0; i--) {
+                const shuffled = [...array];
+                for (let i = shuffled.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
-                return array;
+                return shuffled;
             };
 
-            // "Decks" to draw from. We only refill when empty.
-            let portraitDeck = shuffle([...portraits]);
-            let landscapeDeck = shuffle([...landscapes]);
+            // Shuffle once - this is our cycle
+            const portraitCycle = shuffle(portraits);
+            const landscapeCycle = shuffle(landscapes);
             
-            // Track last shown item to avoid immediate repeat on refill
-            let lastShownPortrait = null;
-            let lastShownLandscape = null;
+            // Calculate exact slide count needed
+            // Each portrait = 1 slide, each 2 landscapes = 1 slide
+            const landscapePairs = Math.ceil(landscapeCycle.length / 2);
+            const totalSlides = portraitCycle.length + landscapePairs;
 
-            const slidesCount = 15; // Calculated to fit content (~21 images) without forced repeats
+            let portraitIndex = 0;
+            let landscapeIndex = 0;
             let lastOrientation = null;
 
-            // Draw card from deck, handling refill
-            const drawCard = (deck, originalPool, type) => {
-                if (deck.length === 0) {
-                     // Refill
-                     if (originalPool.length === 0) return null;
-                     
-                     let newDeck = shuffle([...originalPool]);
-                     
-                     // Boundary check: if first item is same as last shown, swap it
-                     // (Only needed if we have more than 1 item)
-                     if (newDeck.length > 1 && type === 'portrait' && lastShownPortrait && newDeck[0].src === lastShownPortrait.src) {
-                         [newDeck[0], newDeck[newDeck.length-1]] = [newDeck[newDeck.length-1], newDeck[0]];
-                     } else if (newDeck.length > 1 && type === 'landscape' && lastShownLandscape && newDeck[0].src === lastShownLandscape.src) {
-                         [newDeck[0], newDeck[newDeck.length-1]] = [newDeck[newDeck.length-1], newDeck[0]];
-                     }
-                     
-                     deck.push(...newDeck);
-                }
-                
-                const item = deck.pop();
-                if (item) {
-                    if (type === 'portrait') lastShownPortrait = item;
-                    else lastShownLandscape = item;
-                }
-                return item;
-            };
-
-            for (let i = 0; i < slidesCount; i++) {
+            for (let i = 0; i < totalSlides; i++) {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
 
-                // Strict Alternation Logic: Modified
-                // Rule: Portraits can NOT be near-by-near. Landscapes CAN.
-                
+                // Decide orientation
+                // Rule: If last was portrait, MUST use landscape next (unless no landscapes left)
                 let usePortrait;
                 
+                const portraitsRemaining = portraitIndex < portraitCycle.length;
+                const landscapesRemaining = landscapeIndex < landscapeCycle.length;
+                
                 if (lastOrientation === 'portrait') {
-                     usePortrait = false; // MUST be landscape
-                     // Exception: if NO landscapes left at all (deck + pool empty)
-                     if (landscapeDeck.length === 0 && landscapes.length === 0) usePortrait = true; 
+                    // MUST use landscape next
+                    usePortrait = !landscapesRemaining; // Only portrait if no landscapes left
                 } else {
-                     // Last was landscape (or null/start)
-                     // Can be either. Let's weigh it based on availability or random.
-                     // 50/50 chance if both available.
-                     usePortrait = Math.random() > 0.5;
-                     
-                     // Force landscape if portrait pool is empty
-                     if (portraitDeck.length === 0 && portraits.length === 0) usePortrait = false;
-                     // Force portrait if landscape pool is empty
-                     if (landscapeDeck.length === 0 && landscapes.length === 0) usePortrait = true;
+                    // Can use either, prefer based on what's remaining
+                    if (!portraitsRemaining) {
+                        usePortrait = false; // Must use landscape
+                    } else if (!landscapesRemaining) {
+                        usePortrait = true; // Must use portrait
+                    } else {
+                        // Both available, random choice
+                        usePortrait = Math.random() > 0.5;
+                    }
                 }
                 
-                if (usePortrait) {
-                    // PORTRAIT
-                    const item = drawCard(portraitDeck, portraits, 'portrait');
-                    if (item) {
-                        slide.innerHTML = createGalleryItem(item, 'h-100');
-                        lastOrientation = 'portrait';
-                        swiperWrapper.appendChild(slide);
-                    }
-                } else {
-                    // LANDSCAPE (Stacked)
-                    const item1 = drawCard(landscapeDeck, landscapes, 'landscape');
-                    const item2 = drawCard(landscapeDeck, landscapes, 'landscape');
+                if (usePortrait && portraitsRemaining) {
+                    // PORTRAIT SLIDE
+                    const item = portraitCycle[portraitIndex++];
+                    slide.innerHTML = createGalleryItem(item, 'h-100');
+                    lastOrientation = 'portrait';
+                    swiperWrapper.appendChild(slide);
+                } else if (landscapesRemaining) {
+                    // LANDSCAPE SLIDE (Try to get 2, or duplicate last if odd)
+                    const item1 = landscapeCycle[landscapeIndex++];
+                    let item2;
                     
-                    if (item1) {
-                        if (item2) {
-                            slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
-                        } else {
-                             slide.innerHTML = createGalleryItem(item1, 'h-100');
-                        }
-                        lastOrientation = 'landscape';
-                        swiperWrapper.appendChild(slide);
+                    if (landscapeIndex < landscapeCycle.length) {
+                        // We have another landscape
+                        item2 = landscapeCycle[landscapeIndex++];
+                    } else if (landscapeCycle.length % 2 === 1) {
+                        // Odd count, duplicate the last one
+                        item2 = item1;
                     }
+                    
+                    if (item2) {
+                        slide.innerHTML = createGalleryItem(item1, 'h-50') + createGalleryItem(item2, 'h-50');
+                    } else {
+                        slide.innerHTML = createGalleryItem(item1, 'h-100');
+                    }
+                    lastOrientation = 'landscape';
+                    swiperWrapper.appendChild(slide);
                 }
             }
 
             // Initialize GLightbox
-            const lightbox = GLightbox({ selector: '.glightbox' });
+            GLightbox({ selector: '.glightbox' });
 
-            // Initialize Swiper
+            // Initialize Swiper with proper loop configuration
             new Swiper('#gallery .init-swiper', {
               loop: true,
+              loopedSlides: Math.max(10, totalSlides), // Buffer for smooth looping
               speed: 600,
               autoplay: {
                 delay: 3000,
@@ -1569,6 +1549,8 @@
               },
               slidesPerView: 'auto',
               spaceBetween: 20,
+              observer: true,
+              observeParents: true,
               pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
@@ -1583,11 +1565,11 @@
                   slidesPerView: 1,
                   spaceBetween: 20
                 },
-                768: { // iPad portrait
+                768: {
                    slidesPerView: 2,
                    spaceBetween: 20
                 },
-                1200: { // Desktop
+                1200: {
                   slidesPerView: 3,
                   spaceBetween: 20
                 }
