@@ -423,3 +423,25 @@ p {
 img[loading="lazy"] {
   opacity: 1; /* Ensure visible */
 }
+
+/* Back Link Styling */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: #0969da;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  color: #0550ae;
+  text-decoration: none;
+  transform: translateX(-3px);
+}
+
+.back-link i {
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
