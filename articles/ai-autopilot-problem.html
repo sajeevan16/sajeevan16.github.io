@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>The "Autopilot" Problem: Is AI Killing Our Critical Thinking? - Sajeevan Vinayakavaseekaran</title>
+  <meta name="description" content="A critical examination of how AI coding assistants like Copilot and Antigravity impact developer thinking and architectural decision-making.">
+  <meta name="keywords" content="AI coding, critical thinking, software engineering, Copilot, Antigravity, code review, developer mindset">
+  <meta name="author" content="Sajeevan Vinayakavaseekaran">
+  <link rel="canonical" href="https://sajeevan16.github.io/articles/ai-autopilot-problem.html">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <link href="../assets/css/custom.css" rel="stylesheet">
+  
+  <style>
+    .article-header-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    
+    .article-meta {
+      color: #57606a;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #1f2328;
+    }
+    
+    .article-content h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .article-content blockquote {
+      border-left: 4px solid #0969da;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #57606a;
+    }
+    
+    .article-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #d0d7de;
+    }
+    
+    .tag {
+      background: #ddf4ff;
+      color: #0969da;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .tag:hover {
+      background: #0969da;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="../index.html"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+        <li><a href="../articles.html" class="active"><i class="bi bi-file-text navicon"></i><span>Articles</span></a></li>
+        <li><a href="../why-hire-me.html"><i class="bi bi-trophy navicon"></i><span>Why Hire Me</span></a></li>
+        <li><a href="../technical-skills.html"><i class="bi bi-code-slash navicon"></i><span>Technical Skills</span></a></li>
+        <li><a href="../leadership-projects.html"><i class="bi bi-people navicon"></i><span>Leadership</span></a></li>
+        <li><a href="../career-journey.html"><i class="bi bi-signpost navicon"></i><span>Career Journey</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../articles.html">Articles</a></li>
+            <li class="current">The "Autopilot" Problem</li>
+          </ol>
+        </nav>
+        <p class="mt-3">
+          <a href="../articles.html" class="back-link">
+            <i class="bi bi-chevron-left"></i> Back to Articles
+          </a>
+        </p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Article Section -->
+    <section class="about section">
+      <div class="container">
+        
+        <article data-aos="fade-up">
+          <img src="images/ai-autopilot-header.png" alt="AI Autopilot Problem Header" class="article-header-image">
+          
+          <h1 class="mb-4">The "Autopilot" Problem: Is AI Killing Our Critical Thinking?</h1>
+          
+          <div class="article-meta">
+            <span><i class="bi bi-calendar3 me-1"></i> February 18, 2026</span>
+            <span><i class="bi bi-clock me-1"></i> 6 min read</span>
+            <span><i class="bi bi-person me-1"></i> Sajeevan Vinayakavaseekaran</span>
+          </div>
+          
+          <div class="article-content">
+            <p>I recently reviewed a PR that terrified me. On the surface, it was flawless. The logic handled edge cases, the variable names were clean, and the unit tests passed. But I spotted a hidden vulnerability in the dependency structure. I asked the developer:</p>
+            
+            <p><em>"Why did you choose this part of the core logic? Why not another way?"</em></p>
+            
+            <p>Silence.</p>
+            
+            <p>Then, the honest admission: <strong>"Oh, I'm not sure. Antigravity suggested the structure, and I just hit Tab."</strong></p>
+
+            <h2>The Bootstrap Paradox of Modern Engineering</h2>
+            
+            <p>This is the Bootstrap Paradox of modern software engineering: We have code that exists, works, and drives value, but no human being actually understands why it was built that way. We are drifting into a dangerous state where we treat tools like Antigravity and Copilot as "Architects" instead of "Assistants."</p>
+            
+            <p>When you let AI make architectural decisions, you aren't engineering; you're gambling. You get "House of Cards" architecture—it looks solid from the outside, but it collapses the moment you need to refactor or scale because it lacks a cohesive human vision.</p>
+            
+            <h2>We are becoming "Middle Managers" of our own minds</h2>
+            
+            <p>Think about it. Instead of doing the deep, messy work of creating, we are becoming "approvers."</p>
+            
+            <ul>
+              <li>We prompt.</li>
+              <li>We review the output.</li>
+              <li>We fix a few typos.</li>
+              <li>We hit "Tab."</li>
+            </ul>
+            
+            <p>We are rubber-stamping intelligence rather than generating it. Coding isn't just about producing syntax; coding is thinking. It's the struggle with the blank IDE that forces you to clarify your logic. It's the process of structuring the dependency graph that cements the system design in your brain. When you outsource the implementation, you outsource the understanding.</p>
+            
+            <blockquote>
+              If we aren't careful, we risk becoming "Intellectual Tourists" in our own codebases—visiting the logic, but never actually inhabiting it.
+            </blockquote>
+            
+            <h2>How to Stay in the Driver's Seat</h2>
+            
+            <p><strong>1. Don't start with the solution.</strong> I never ask AI to "write this feature for me." I ask it to debate me.</p>
+            
+            <ul>
+              <li>"I'm planning to use Event Sourcing here. Tell me why that's a terrible idea for this scale."</li>
+              <li>"Roast this database schema."</li>
+            </ul>
+            
+            <p><strong>Goal:</strong> Use AI to harden your mental model, not replace it.</p>
+            
+            <p><strong>2. The "Validation-First" Loop.</strong> Instead of asking "How do I do X?", I write my solution and ask: "What are the security vulnerabilities in this approach?" or "How would this code fail under high concurrency?" Use the tool to challenge your assumptions, not just confirm them.</p>
+            
+            <p><strong>3. Strict Boundaries.</strong> I never give it an open-ended "Build this feature" command without strict constraints.</p>
+            
+            <p><strong>4. The "Explain-Before-Commit" Rule.</strong> If I do use a generated snippet (like a complex Regex or a weird SQL query), I force myself to explain exactly how it works line-by-line before I commit it. If I can't explain it, I can't ship it.</p>
+            
+            <h2>Final Thoughts</h2>
+            
+            <p>AI is a powerful engine, but we have to remain the steering wheel. Don't let the autopilot make you forget how to drive.</p>
+            
+            <p>The future belongs to engineers who can harness AI without becoming dependent on it. Those who use it to amplify their thinking, not replace it. Those who remain architects, not approvers.</p>
+          </div>
+          
+          <div class="article-tags">
+            <a href="../articles.html?tag=ai" class="tag">AI & Development</a>
+            <a href="../articles.html?tag=critical-thinking" class="tag">Critical Thinking</a>
+            <a href="../articles.html?tag=code-review" class="tag">Code Review</a>
+            <a href="../articles.html?tag=software-engineering" class="tag">Software Engineering</a>
+            <a href="../articles.html?tag=best-practices" class="tag">Best Practices</a>
+          </div>
+        </article>
+        
+      </div>
+    </section><!-- End Article Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <h3 class="sitename">Sajeevan Vinayakavaseekaran</h3>
+      <p>Technical Lead | Full-stack Developer | Innovator</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.facebook.com/sajee.gone" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/sajeevan_vaseekaran" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sajeevan-vinayakavaseekaran/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/sajeevan16" target="_blank"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">Sajeevan Vinayakavaseekaran</strong> <span>All Rights Reserved</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Articles & Insights - Sajeevan Vinayakavaseekaran</title>
+  <meta name="description" content="Technical articles, thought leadership, and insights on software engineering, AI, leadership, and modern development practices by Sajeevan Vinayakavaseekaran.">
+  <meta name="keywords" content="software engineering articles, tech blog, AI development, code quality, technical leadership">
+  <meta name="author" content="Sajeevan Vinayakavaseekaran">
+  <link rel="canonical" href="https://sajeevan16.github.io/articles.html">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  
+  <style>
+    .filter-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: #f6f8fa;
+      border-radius: 6px;
+    }
+    
+    .filter-tag {
+      background: white;
+      color: #57606a;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid #d0d7de;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .filter-tag:hover, .filter-tag.active {
+      background: #0969da;
+      color: white;
+      border-color: #0969da;
+    }
+    
+    .article-card {
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s;
+      background: white;
+    }
+    
+    .article-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: #0969da;
+      transform: translateY(-2px);
+    }
+    
+    .article-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .article-card h3 a {
+      color: #1f2328;
+      text-decoration: none;
+    }
+    
+    .article-card h3 a:hover {
+      color: #0969da;
+    }
+    
+    .article-excerpt {
+      color: #57606a;
+      margin-bottom: 1rem;
+    }
+    
+    .article-meta {
+      color: #57606a;
+      font-size: 0.85rem;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .article-tags-inline {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    
+    .tag-small {
+      background: #ddf4ff;
+      color: #0969da;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      text-decoration: none;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="index.html"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+        <li><a href="articles.html" class="active"><i class="bi bi-file-text navicon"></i><span>Articles</span></a></li>
+        <li><a href="why-hire-me.html"><i class="bi bi-trophy navicon"></i><span>Why Hire Me</span></a></li>
+        <li><a href="technical-skills.html"><i class="bi bi-code-slash navicon"></i><span>Technical Skills</span></a></li>
+        <li><a href="leadership-projects.html"><i class="bi bi-people navicon"></i><span>Leadership</span></a></li>
+        <li><a href="career-journey.html"><i class="bi bi-signpost navicon"></i><span>Career Journey</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Articles</li>
+          </ol>
+        </nav>
+        <h1>Articles & Insights</h1>
+        <p class="mt-3">
+          <a href="index.html" class="back-link">
+            <i class="bi bi-chevron-left"></i> Back to Home
+          </a>
+        </p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Articles Section -->
+    <section class="about section">
+      <div class="container">
+        
+        <div class="section-title" data-aos="fade-up">
+          <h2>Technical Writings</h2>
+          <p>Thoughts on software engineering, AI, leadership, and modern development practices</p>
+        </div>
+        
+        <!-- Tag Filters -->
+        <div class="filter-tags" data-aos="fade-up">
+          <span class="filter-tag active" data-filter="all">All Articles</span>
+          <span class="filter-tag" data-filter="ai">AI & Development</span>
+          <span class="filter-tag" data-filter="critical-thinking">Critical Thinking</span>
+          <span class="filter-tag" data-filter="code-review">Code Review</span>
+          <span class="filter-tag" data-filter="software-engineering">Software Engineering</span>
+          <span class="filter-tag" data-filter="best-practices">Best Practices</span>
+        </div>
+        
+        <!-- Articles List -->
+        <div id="articles-container" class="row" data-aos="fade-up">
+          
+          <!-- Article Card -->
+          <div class="col-lg-12 article-item" data-tags="ai,critical-thinking,code-review,software-engineering,best-practices">
+            <div class="article-card">
+              <h3><a href="articles/ai-autopilot-problem.html">The "Autopilot" Problem: Is AI Killing Our Critical Thinking?</a></h3>
+              
+              <div class="article-meta">
+                <span><i class="bi bi-calendar3 me-1"></i> February 18, 2026</span>
+                <span><i class="bi bi-clock me-1"></i> 6 min read</span>
+              </div>
+              
+              <p class="article-excerpt">
+                A critical examination of how AI coding assistants like Copilot and Antigravity impact developer thinking and architectural decision-making. Are we becoming "middle managers" of our own minds?
+              </p>
+              
+              <div class="article-tags-inline">
+                <span class="tag-small">AI & Development</span>
+                <span class="tag-small">Critical Thinking</span>
+                <span class="tag-small">Code Review</span>
+                <span class="tag-small">Software Engineering</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- More articles will be added here as you create them -->
+          
+        </div>
+        
+      </div>
+    </section><!-- End Articles Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <h3 class="sitename">Sajeevan Vinayakavaseekaran</h3>
+      <p>Technical Lead | Full-stack Developer | Innovator</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.facebook.com/sajee.gone" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/sajeevan_vaseekaran" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sajeevan-vinayakavaseekaran/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/sajeevan16" target="_blank"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">Sajeevan Vinayakavaseekaran</strong> <span>All Rights Reserved</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Tag Filtering Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterTags = document.querySelectorAll('.filter-tag');
+      const articles = document.querySelectorAll('.article-item');
+      
+      // Check URL for tag parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const tagParam = urlParams.get('tag');
+      
+      if (tagParam) {
+        filterArticles(tagParam);
+        filterTags.forEach(tag => {
+          if (tag.dataset.filter === tagParam) {
+            tag.classList.add('active');
+          } else {
+            tag.classList.remove('active');
+          }
+        });
+      }
+      
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          const filter = this.dataset.filter;
+          
+          // Update active state
+          filterTags.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter articles
+          filterArticles(filter);
+        });
+      });
+      
+      function filterArticles(filter) {
+        articles.forEach(article => {
+          if (filter === 'all') {
+            article.classList.remove('hidden');
+          } else {
+            const tags = article.dataset.tags.split(',');
+            if (tags.includes(filter)) {
+              article.classList.remove('hidden');
+            } else {
+              article.classList.add('hidden');
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
