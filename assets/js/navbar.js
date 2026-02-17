@@ -1,7 +1,7 @@
 /**
- * Reusable Navigation Component
+ * Reusable Navigation Component (v2)
  * This script injects the navigation header into the page.
- * It handles relative paths for subdirectories and sets the active class.
+ * It handles relative paths and determines which menu to show (Main or Sub).
  */
 
 (function() {
@@ -9,28 +9,30 @@
   
   // Determine relative path base
   // Simple check: if path ends with .html and has more than one slash, or contains folders like /articles/
-  // Note: This logic assumes a simple depth structure. Adjust if deeper nesting occurs.
   const isSubdirectory = currentPath.includes('/articles/') && currentPath.split('/').length > 2;
   const basePath = isSubdirectory ? '../' : '';
 
-  // Define pages that use the "Sub Nav" (Articles, Career, etc.)
-  // These pages share a specific navigation menu different from the main index.html
-  const subNavPages = [
-    'articles.html',
-    'why-hire-me.html',
-    'technical-skills.html',
-    'leadership-projects.html',
-    'career-journey.html'
+  // Define keywords for pages that use the "Sub Nav"
+  // We check if the URL contains these strings (robust against .html extension or lack thereof)
+  const subNavKeywords = [
+    'articles',
+    'why-hire-me',
+    'technical-skills',
+    'leadership-projects',
+    'career-journey'
   ];
 
   // Check if current page is a Sub Nav page
-  // It handles both root-level sub-pages and pages inside /articles/
-  const isSubNav = subNavPages.some(page => currentPath.endsWith(page)) || currentPath.includes('/articles/');
+  // Matches '/articles.html', '/articles/', '/why-hire-me', etc.
+  const isSubNav = subNavKeywords.some(keyword => currentPath.includes(keyword));
+
+  console.log('Navbar Debug:', { currentPath, isSubNav, isSubdirectory });
 
   let navbarHTML = '';
 
   if (isSubNav) {
     // --- Sub Navigation (for Articles, Career, etc.) ---
+    // Links point back to themselves or siblings using basePath
     navbarHTML = `
     <header id="header" class="header d-flex flex-column justify-content-center">
       <i class="header-toggle d-xl-none bi bi-list"></i>
@@ -52,7 +54,7 @@
     // Determine if we are on the home page (index.html or root)
     const isHomePage = currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '/sajeevan16.github.io/';
   
-    // If on home page, use anchor links (#about). If on other pages, use full path (index.html#about).
+    // Links logic
     const homeLink = isHomePage ? '#hero' : `${basePath}index.html`;
     const aboutLink = isHomePage ? '#about' : `${basePath}index.html#about`;
     const resumeLink = isHomePage ? '#resume' : `${basePath}index.html#resume`;
@@ -90,36 +92,27 @@
     document.body.insertAdjacentHTML('afterbegin', navbarHTML);
   }
 
-  // Highlight active link based on current URL
-  // Matches based on the href attribute containing the current page name
+  // Highlight active link
   const navLinks = document.querySelectorAll('#navmenu a');
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
     
-    // For Sub Nav pages, exact match is usually sufficient (e.g. "articles.html")
-    // But we need to handle "active" class carefully.
-    
     if (isSubNav) {
-      // If the link href matches the current page filename
-      // e.g. href="why-hire-me.html" and path ends with "why-hire-me.html"
-      // or href="../articles.html" and path includes "/articles/"
+      // Sub Nav Active Logic
+      // Check if the current URL contains the key part of the href (e.g. "why-hire-me")
+      // Remove relative '../' and extension '.html' for cleaner checking
+      const cleanHref = href.replace('../', '').replace('.html', '');
       
-      const pageName = currentPath.split('/').pop();
-      
-      if (currentPath.includes('/articles/') && href.includes('articles.html')) {
-        link.classList.add('active');
-         // If inside an article (e.g. ai-autopilot-problem.html), highlight "Articles"
-         // There is no "ai-autopilot-problem.html" link in the nav, so "Articles" is the correct parent.
-      }
-      else if (href.endsWith(pageName) && pageName !== '') {
+      if (cleanHref === 'index') {
+         // Home link only active if we are strictly on home? But we are in Sub Nav mode, so Home is never active self?
+         // Actually, if we are in Sub Nav, we are NOT on Home.
+      } else if (cleanHref === 'articles' && currentPath.includes('/articles/')) {
+         link.classList.add('active'); // Parent "Articles" active for sub-articles
+      } else if (currentPath.includes(cleanHref)) {
          link.classList.add('active');
       }
     } else {
-        // Main Nav logic (handled mostly by isHomePage check above, or scrollspy in main.js)
-        // If we are on portfolio-details.html, there is no "Portfolio Details" link in nav.
-        // It might be nice to highlight "Projects" (Portfolio).
-        // But main.js handles scrollspy for index.html.
-        // For details pages, standard behavior is often no active link or "Home".
+       // Main Nav Active Logic (optional, mostly handled by isHomePage or external scrollspy)
     }
   });
 
