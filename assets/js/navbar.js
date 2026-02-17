@@ -65,15 +65,15 @@
     const articlesLink = `${basePath}articles.html`;
 
     navbarHTML = `
-    <header id="header" class="header d-flex flex-column justify-content-center">
+<header id="header" class="header d-flex flex-column justify-content-center">
       <i class="header-toggle d-xl-none bi bi-list"></i>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="${homeLink}" class="${isHomePage ? 'active' : ''}"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+          <li><a href="${articlesLink}"><i class="bi bi-newspaper navicon"></i><span>Articles</span></a></li>
           <li><a href="${aboutLink}"><i class="bi bi-person navicon"></i><span>About</span></a></li>
           <li><a href="${resumeLink}"><i class="bi bi-file-earmark-text navicon"></i><span>Experience</span></a></li>
           <li><a href="${portfolioLink}"><i class="bi bi-code-square navicon"></i><span>Projects</span></a></li>
-          <li><a href="${articlesLink}"><i class="bi bi-newspaper navicon"></i><span>Articles</span></a></li>
           <li><a href="${galleryLink}"><i class="bi bi-images navicon"></i><span>Gallery</span></a></li>
           <li><a href="${servicesLink}"><i class="bi bi-award navicon"></i><span>Certifications</span></a></li>
           <li><a href="${contactLink}"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
