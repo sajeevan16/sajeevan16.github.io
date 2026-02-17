@@ -38,7 +38,7 @@ body {
 
 /* Profile Image - Round */
 .about img {
-  border-radius: 50%;
+  border-radius: 8px;
   border: 4px solid #ffffff;
   box-shadow: 0 0 0 1px #d0d7de;
 }
