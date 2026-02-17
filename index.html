@@ -1660,6 +1660,11 @@
                   spaceBetween: 20
                 }
               },
+              autoplay: {
+                delay: 3000, // Auto-scroll every 3 seconds
+                disableOnInteraction: false, // Continue autoplay after user interaction
+                pauseOnMouseEnter: true // Pause on hover
+              },
               on: {
                 slideChange: function() {
                   // Jump to middle set when reaching boundaries
